@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Location</string>
+    <string name="choosemap">Choose Map</string>
+    <string name="regularview">Regular View</string>
+    <string name="cyclemapview">Cycle Map View</string>
+    <string name="selectmap">Select Map</string>
+</resources>
