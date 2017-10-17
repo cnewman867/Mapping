@@ -12,6 +12,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/cyclemapview"
-        android:id="@+id/btnCyclemap" />
+        android:text="@string/publictransportview"
+        android:id="@+id/btnPublictransport" />
 </LinearLayout>
+

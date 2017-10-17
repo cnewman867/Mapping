@@ -26,7 +26,7 @@ public class MainActivity extends Activity implements LocationListener {
         setContentView(R.layout.activity_main);
 
         LocationManager mgr=(LocationManager)getSystemService(Context.LOCATION_SERVICE);
-        mgr.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,this);
+        //mgr.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,this);
 
         mv = (MapView)findViewById(R.id.map1);
 
@@ -46,9 +46,15 @@ public class MainActivity extends Activity implements LocationListener {
 
     public boolean onOptionsItemSelected(MenuItem item){
         if(item.getItemId() == R.id.choosemap) {
-            //react tp the menu item being selected
+            //react to the menu item being selected
             Intent intent = new Intent(this,MapChooseActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent,0);
+            return true;
+        }
+
+        else if(item.getItemId() == R.id.setLocation) {
+            Intent intent = new Intent(this,MapSetLocationActivity.class);
+            startActivityForResult(intent,1);
             return true;
         }
         return false;
@@ -77,6 +83,29 @@ public class MainActivity extends Activity implements LocationListener {
                 Toast.LENGTH_LONG).show();
     }
 
+    protected  void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 0) {
+                Bundle extras = intent.getExtras();
+                boolean publictransport = extras.getBoolean("com.example.publictransport");
+                if (publictransport == true) {
+                    mv.setTileSource(TileSourceFactory.PUBLIC_TRANSPORT);
+                } else {
+                    mv.setTileSource(TileSourceFactory.MAPNIK);
+                }
+            }
 
+            else if(requestCode == 1){
+                Bundle extras = intent.getExtras();
+                double latitude = extras.getDouble("com.example.setLatitude");
+                double longitude = extras.getDouble("com.example.setLongitude");
+
+                //set the latitude and longitude to what has been selected
+                mv.getController().setCenter(new GeoPoint(latitude, longitude));
+            }
+        }
+
+
+    }
 
 }

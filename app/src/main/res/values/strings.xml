@@ -2,6 +2,10 @@
     <string name="app_name">Location</string>
     <string name="choosemap">Choose Map</string>
     <string name="regularview">Regular View</string>
-    <string name="cyclemapview">Cycle Map View</string>
+    <string name="publictransportview">Public Transport View</string>
     <string name="selectmap">Select Map</string>
+    <string name="OK">OK</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="setLocation">Set Location</string>
 </resources>
